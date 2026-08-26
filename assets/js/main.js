@@ -203,6 +203,7 @@
   /* ═════════════════════ ABOUT ═════════════════════ */
   function renderAbout() {
     const a = D.about, p = D.profile, edu = D.education[0] || {};
+    const logic = a.logic || {};
     /* headline: first half of the words in blue, second half in white */
     const parts = L(a.headline).split(' ');
     const cut = Math.ceil(parts.length / 2);
@@ -211,30 +212,56 @@
       : esc(parts.join(' '));
     $('#aboutLead').textContent = L(a.lead);
     $('#aboutBody').innerHTML = LA(a.body).map((t) => `<p>${t}</p>`).join('');
-    $('#aboutSide').innerHTML = [
-      `<div class="about-card reveal">
-         <div class="about-card-label">${esc(ui('misc', 'degree'))}</div>
-         <div class="about-card-value">${esc(L(edu.degree))}</div>
-         <div class="about-card-sub">${esc(L(edu.org))} · ${esc(L(edu.period))}</div>
-       </div>`,
-      `<div class="about-card reveal">
-         <div class="about-card-label">${esc(ui('misc', 'lab'))}</div>
-         <div class="about-card-value"><a href="${esc(edu.labUrl || p.labUrl)}" target="_blank" rel="noopener noreferrer">${esc(edu.lab || '')}</a></div>
-         <div class="about-card-sub">${esc(L(edu.advisor))}</div>
-       </div>`,
-      `<div class="about-card reveal">
-         <div class="about-card-label">${esc(ui('misc', 'handsOn'))}</div>
-         <ol class="about-steps">${(a.steps || []).map((s, i) =>
-           `<li><span class="step-no">${i + 1}</span><div><div class="step-title">${esc(L(s.title))}</div><div class="step-desc">${esc(L(s.desc))}</div></div></li>`).join('')}</ol>
-       </div>`,
-    ].join('');
+    $('#aboutSide').innerHTML = `
+      <div class="model-logic reveal">
+        <div class="logic-topline"><span>${esc(L(logic.label) || '')}</span><span>${esc(logic.signature || '')}</span></div>
+        <div class="logic-equation">
+          <div class="logic-term">
+            <span class="logic-key">${esc(logic.data?.key || '')}</span>
+            <strong>${esc(L(logic.data?.title) || '')}</strong>
+            <small>${esc(L(logic.data?.desc) || '')}</small>
+          </div>
+          <span class="logic-operator" aria-hidden="true">×</span>
+          <div class="logic-term logic-term-domain">
+            <span class="logic-key">${esc(logic.domain?.key || '')}</span>
+            <strong>${esc(L(logic.domain?.title) || '')}</strong>
+            <small>${esc(L(logic.domain?.desc) || '')}</small>
+          </div>
+        </div>
+        <div class="logic-connector"><span></span><em>model design</em><span></span></div>
+        <div class="logic-output">
+          <span class="logic-key">${esc(logic.output?.key || '')}</span>
+          <strong>${esc(L(logic.output?.title) || '')}</strong>
+          <small>${esc(L(logic.output?.desc) || '')}</small>
+        </div>
+        <svg class="logic-curve" viewBox="0 0 420 70" preserveAspectRatio="none" aria-hidden="true">
+          <path class="logic-threshold" d="M0 48H420"/>
+          <path class="logic-path" d="M0 13 C95 14 155 18 220 25 C300 34 346 47 420 68"/>
+          <circle cx="348" cy="48" r="4"/>
+        </svg>
+        <ol class="logic-principles">${(a.steps || []).map((s, i) =>
+          `<li><span>0${i + 1}</span><div><strong>${esc(L(s.title))}</strong><small>${esc(L(s.desc))}</small></div></li>`).join('')}</ol>
+      </div>
+      <div class="about-meta-grid reveal">
+        <div class="about-meta-item">
+          <span>${esc(ui('misc', 'degree'))}</span>
+          <strong>${esc(L(edu.degree))}</strong>
+          <small>${esc(L(edu.org))} · ${esc(L(edu.period))}</small>
+        </div>
+        <div class="about-meta-item">
+          <span>${esc(ui('misc', 'lab'))}</span>
+          <strong><a href="${esc(edu.labUrl || p.labUrl)}" target="_blank" rel="noopener noreferrer">IODA Lab</a></strong>
+          <small>${esc(L(edu.advisor))}</small>
+        </div>
+      </div>`;
   }
 
   /* ═════════════════════ RESEARCH ═════════════════════ */
   function renderResearch() {
-    $('#researchGrid').innerHTML = D.research.map((r) =>
+    $('#researchGrid').innerHTML = D.research.map((r, i) =>
       `<div class="research-card reveal">
-         <div class="rc-head"><div class="rc-icon">${esc(r.icon)}</div><h3 class="rc-title">${esc(L(r.title))}</h3></div>
+         <div class="rc-topline"><span class="rc-index">0${i + 1}</span><span class="rc-code">${esc(r.code || '')}</span></div>
+         <h3 class="rc-title">${esc(L(r.title))}</h3>
          <p class="rc-desc">${esc(L(r.desc))}</p>
        </div>`).join('');
   }

@@ -77,13 +77,13 @@ window.SITE_DATA = {
       menu:        { en: "Menu",                ko: "메뉴" },
       photoBadge:  { en: "PHM researcher · IODA Lab", ko: "PHM 연구자 · IODA Lab" },
       logoName:    "Taeyi",
-      eyebrow:     { en: "Time-Series Analysis · Physics-Informed Modeling · PHM", ko: "시계열 분석 · 물리 기반 모델링 · PHM" },
+      eyebrow:     { en: "Time-Series Analysis · Domain-Informed Modeling · PHM", ko: "시계열 분석 · 도메인 지식 기반 모델링 · PHM" },
       degree:      { en: "Degree",              ko: "학위" },
       lab:         { en: "Lab",                 ko: "연구실" },
       keywords:    { en: "Keywords",            ko: "키워드" },
       handsOn:     { en: "Modeling principles", ko: "모델 설계 원칙" },
-      pageTitle:   { en: "Taeyi Kim | PHM · Time-Series Analysis · Physics-Informed Modeling",
-                     ko: "김태이 | PHM · 시계열 분석 · 물리 기반 모델링" },
+      pageTitle:   { en: "Taeyi Kim | PHM · Time-Series Analysis · Domain-Informed Modeling",
+                     ko: "김태이 | PHM · 시계열 분석 · 도메인 지식 기반 모델링" },
     },
   },
 
@@ -103,13 +103,13 @@ window.SITE_DATA = {
     titles: {
       en: [
         "Forecasting battery degradation from early-cycle data",
-        "Designing models that respect degradation physics",
-        "Quantifying uncertainty in long-horizon forecasts",
+        "Bringing electrochemical knowledge into time-series models",
+        "Designing forecasts with domain constraints and uncertainty",
       ],
       ko: [
         "초기 데이터로 배터리의 남은 열화를 예측합니다",
-        "열화의 물리적 정합성을 고려해 모델을 설계합니다",
-        "장기 예측의 불확실성까지 함께 추정합니다",
+        "전기화학 지식을 시계열 모델에 결합합니다",
+        "도메인 제약과 예측 불확실성을 함께 반영합니다",
       ],
     },
     location: {
@@ -120,21 +120,21 @@ window.SITE_DATA = {
       en: [
         "M.S. in Industrial & Management Engineering, Hanyang University ERICA · <strong>IODA Lab</strong> (Advisor: Prof. Stephane Barde)",
         "<strong>Time series</strong> — model the SOH, RUL, and full degradation trajectory hidden in short early-cycle records",
-        "<strong>Physical consistency</strong> — incorporate electrochemical equations, degradation shapes, and stochastic processes into model design",
+        "<strong>Domain knowledge</strong> — incorporate electrochemical equations, degradation mechanisms, and stochastic processes into model design",
         "<strong>Reliable forecasts</strong> — evaluate generalization across datasets and quantify uncertainty with calibrated prediction intervals",
         "SCI journals <strong>2</strong> (1st author <strong>1</strong>) · Intl. conferences <strong>2</strong> · Patent <strong>1</strong> · <strong>Grand Prize</strong> Factory Hack Korea 2025 · <strong>Best Paper</strong> IEEE PHM 2025",
       ],
       ko: [
         "한양대학교 ERICA 산업경영공학 석사 졸업 · <strong>IODA Lab</strong> (지도교수: Stephane Barde)",
         "<strong>시계열 분석</strong> — 짧은 초기 사이클에서 SOH·RUL과 전체 열화 궤적을 예측합니다",
-        "<strong>물리적 정합성</strong> — 전기화학 방정식, 열화 형상, 확률 과정을 모델 설계에 반영합니다",
+        "<strong>도메인 지식</strong> — 전기화학 방정식, 열화 메커니즘, 확률 과정을 모델 설계에 반영합니다",
         "<strong>신뢰할 수 있는 예측</strong> — 데이터셋 간 일반화 성능을 검증하고 보정된 예측 구간으로 불확실성을 정량화합니다",
         "SCI 저널 <strong>2</strong>편 (1저자 <strong>1</strong>편) · 국제학회 <strong>2</strong>편 · 특허 출원 <strong>1</strong>건 · Factory Hack Korea 2025 <strong>대상</strong> · IEEE PHM 2025 <strong>Best Paper</strong>",
       ],
     },
     tags: {
-      en: ["Battery PHM", "Time-Series Analysis", "Physics-Informed Modeling", "Uncertainty Quantification"],
-      ko: ["배터리 PHM", "시계열 분석", "물리 기반 모델링", "불확실성 정량화"],
+      en: ["Battery PHM", "Time-Series Analysis", "Domain-Informed Modeling", "Uncertainty Quantification"],
+      ko: ["배터리 PHM", "시계열 분석", "도메인 지식 기반 모델링", "불확실성 정량화"],
     },
   },
 
@@ -148,29 +148,48 @@ window.SITE_DATA = {
 
   /* ── 소개 ── */
   about: {
-    headline: { en: "Model the process, not only the pattern", ko: "패턴 너머의 열화 과정을 모델링합니다" },
+    headline: { en: "Bring domain knowledge into the model", ko: "도메인 지식을 시계열 모델에 결합합니다" },
     lead: {
-      en: "I design forecasts around how degradation evolves, what the physics allows, and how uncertain the prediction is.",
-      ko: "열화가 진행되는 방식, 물리적으로 가능한 변화, 그리고 예측의 불확실성을 함께 고려합니다.",
+      en: "Rather than learning from battery data alone, I encode electrochemical equations and degradation mechanisms into model structure and training.",
+      ko: "배터리 데이터를 그대로 학습하는 데서 그치지 않고, 전기화학 방정식과 열화 메커니즘을 모델 구조와 학습 과정에 반영합니다.",
     },
     body: {
       en: [
         "I received my M.S. in Industrial & Management Engineering from Hanyang University ERICA, where I worked with Prof. Stephane Barde at the IODA Lab (Industrial Operations & Data Analytics).",
-        "My focus is PHM and time-series analysis for lithium-ion batteries. I study how to infer SOH, RUL, and the full future degradation trajectory from short early-cycle records, where the late-life knee has not yet appeared and only a small number of cells may be available for training.",
-        "I treat degradation forecasting as more than curve fitting. My work has used the Butler–Volmer equation to guide neural models, a time-varying hazard rate in an HMM–Wiener framework, and a lifetime-scaled degradation shape with calibrated prediction intervals. The goal is a model whose output is accurate, physically interpretable, and honest about uncertainty.",
+        "My main problem is predicting battery SOH, RUL, and the full degradation trajectory from short early-cycle records. I design methods that can generalize when training cells are limited and the late-life knee has not yet been observed.",
+        "In practice, I have used the Butler–Volmer equation to guide a neural model, introduced a time-varying hazard rate into an HMM–Wiener framework, and combined a lifetime-scaled degradation shape with calibrated prediction intervals. I test how domain knowledge can make data-driven forecasts more interpretable and reliable.",
       ],
       ko: [
         "한양대학교 ERICA 산업경영공학과에서 석사 학위를 받았고, IODA Lab(Industrial Operations & Data Analytics)에서 Stephane Barde 교수님 지도로 연구했습니다.",
-        "리튬이온 배터리 PHM과 시계열 분석을 연구합니다. 열화 후반의 knee가 아직 나타나지 않은 짧은 초기 사이클과 적은 수의 학습 셀만으로 SOH·RUL, 이후의 전체 열화 궤적을 예측하는 문제에 관심이 있습니다.",
-        "열화 예측을 단순한 곡선 맞춤 문제로 보지 않습니다. Butler–Volmer 방정식을 신경망 설계에 반영하고, HMM–Wiener 과정에 시변 위험률 함수를 결합했으며, 수명에 따라 스케일되는 열화 형상과 보정된 예측 구간을 함께 연구했습니다. 정확하면서도 물리적으로 설명 가능하고, 불확실성을 숨기지 않는 모델을 만드는 것이 목표입니다.",
+        "주요 연구 문제는 짧은 초기 사이클만으로 배터리의 SOH·RUL과 이후의 전체 열화 궤적을 예측하는 것입니다. 학습할 수 있는 셀이 적고 열화 후반의 knee가 아직 관측되지 않은 상황에서도 일반화할 수 있는 방법을 설계합니다.",
+        "구체적으로 Butler–Volmer 방정식을 신경망에 반영하고, HMM–Wiener 과정에 시변 위험률 함수를 결합했으며, 수명에 따라 스케일되는 열화 형상과 보정된 예측 구간을 함께 연구했습니다. 도메인 지식이 데이터 기반 예측의 해석 가능성과 신뢰성을 어떻게 높이는지 검증하고 있습니다.",
       ],
+    },
+    logic: {
+      label: { en: "Research logic", ko: "연구의 중심" },
+      signature: "TAEYI.KIM / PHM",
+      data: {
+        key: "01 / DATA",
+        title: { en: "Battery time series", ko: "배터리 시계열" },
+        desc: { en: "capacity · voltage · cycle", ko: "용량 · 전압 · 사이클" },
+      },
+      domain: {
+        key: "02 / DOMAIN",
+        title: { en: "Electrochemical knowledge", ko: "전기화학 도메인 지식" },
+        desc: { en: "equations · mechanisms · constraints", ko: "방정식 · 열화 메커니즘 · 제약" },
+      },
+      output: {
+        key: "MODEL OUTPUT",
+        title: "SOH · RUL · Degradation trajectory",
+        desc: { en: "forecast with calibrated uncertainty", ko: "보정된 불확실성을 포함한 예측" },
+      },
     },
     /* 소개 오른쪽 "모델 설계 원칙" 카드 */
     steps: [
       { title: { en: "Temporal structure", ko: "시계열 구조" },
         desc:  { en: "Learn long-term degradation from short early-cycle records",
                  ko: "짧은 초기 사이클에서 장기 열화 구조를 추론" } },
-      { title: { en: "Physical consistency", ko: "물리적 정합성" },
+      { title: { en: "Domain knowledge", ko: "도메인 지식" },
         desc:  { en: "Use electrochemical equations and degradation mechanisms as design guidance",
                  ko: "전기화학 방정식과 열화 메커니즘을 모델 설계에 반영" } },
       { title: { en: "Predictive reliability", ko: "예측 신뢰성" },
@@ -181,22 +200,22 @@ window.SITE_DATA = {
 
   /* ── 연구 분야 카드 ── */
   research: [
-    { icon: "🩺", title: { en: "PHM — Prognostics & Health Management", ko: "PHM (고장 예지 및 건전성 관리)" },
+    { code: "DIAGNOSIS", title: { en: "PHM — Prognostics & Health Management", ko: "PHM (고장 예지 및 건전성 관리)" },
       desc: { en: "Diagnose how far equipment or a battery has degraded, and predict its state of health (SOH), remaining useful life (RUL), and end of life (EOL).",
               ko: "설비나 배터리가 얼마나 열화됐는지 진단하고, 건전성 지표(SOH)와 잔여수명(RUL)·수명종료(EOL) 시점을 예측합니다." } },
-    { icon: "📈", title: { en: "Time-Series Forecasting", ko: "시계열 예측" },
+    { code: "TIME SERIES", title: { en: "Time-Series Forecasting", ko: "시계열 예측" },
       desc: { en: "Forecast degradation curves with Transformer-family models (Informer), physics-informed neural networks (PINN), and stochastic models like HMM–Wiener processes.",
               ko: "Transformer 계열(Informer), 물리 정보 신경망(PINN), HMM·Wiener 과정 같은 확률 모델로 열화 곡선을 예측합니다." } },
-    { icon: "⚛️", title: { en: "Physics-Informed Model Design", ko: "물리적 정합성을 고려한 모델 설계" },
+    { code: "DOMAIN MODEL", title: { en: "Domain-Informed Model Design", ko: "도메인 지식 기반 모델 설계" },
       desc: { en: "Use electrochemical equations such as Butler–Volmer and known degradation behavior to guide model structure and learning.",
               ko: "Butler–Volmer 같은 전기화학 방정식과 알려진 열화 거동을 모델 구조와 학습에 반영합니다." } },
-    { icon: "◫", title: { en: "Uncertainty Quantification", ko: "예측 불확실성 정량화" },
+    { code: "UNCERTAINTY", title: { en: "Uncertainty Quantification", ko: "예측 불확실성 정량화" },
       desc: { en: "Build calibrated prediction intervals and evaluate whether uncertainty remains reliable across cells and datasets.",
               ko: "보정된 예측 구간을 만들고, 셀과 데이터셋이 달라져도 불확실성이 신뢰할 만한지 검증합니다." } },
-    { icon: "⌁", title: { en: "Early-Life Forecasting", ko: "초기 수명 예측" },
+    { code: "EARLY LIFE", title: { en: "Early-Life Forecasting", ko: "초기 수명 예측" },
       desc: { en: "Predict lifetime and the complete future degradation trajectory before the late-life knee is observed.",
               ko: "열화 후반의 knee가 관측되기 전에 수명과 이후의 전체 열화 궤적을 예측합니다." } },
-    { icon: "🏭", title: { en: "Manufacturing Applications", ko: "제조 현장 적용" },
+    { code: "INDUSTRIAL", title: { en: "Manufacturing Applications", ko: "제조 현장 적용" },
       desc: { en: "Tool wear prediction, equipment condition prediction, and ignition-coil defect classification.",
               ko: "공구 마모 예측, 설비 상태 예측, 점화 코일 불량 분류 같은 제조 현장 문제를 다뤘습니다." } },
   ],
@@ -236,8 +255,8 @@ window.SITE_DATA = {
       lab: "Industrial Operations & Data Analytics (IODA) Lab",
       labUrl: "https://ioda-lab.github.io/",
       advisor: { en: "Advisor: Prof. Stephane Barde", ko: "지도교수: Stephane Barde 교수" },
-      focus:  { en: "Research: PHM · Time-series analysis · Physics-informed modeling · Uncertainty quantification",
-                ko: "연구: PHM · 시계열 분석 · 물리 기반 모델링 · 불확실성 정량화" },
+      focus:  { en: "Research: PHM · Time-series analysis · Domain-informed modeling · Uncertainty quantification",
+                ko: "연구: PHM · 시계열 분석 · 도메인 지식 기반 모델링 · 불확실성 정량화" },
     },
     {
       degree: { en: "B.S. — Industrial & Management Engineering", ko: "학사 — 산업경영공학과" },
@@ -541,8 +560,8 @@ window.SITE_DATA = {
   /* ── 연락처 ── */
   contact: {
     intro: {
-      en: "If you'd like to work together on PHM, time-series analysis, or physics-informed degradation modeling, feel free to reach out.",
-      ko: "PHM·시계열 분석·물리적 정합성을 고려한 열화 모델링과 관련해 같이 할 일이 있으면 편하게 연락 주세요.",
+      en: "If you'd like to work together on PHM, time-series analysis, or domain-informed degradation modeling, feel free to reach out.",
+      ko: "PHM·시계열 분석·도메인 지식을 결합한 열화 모델링과 관련해 같이 할 일이 있으면 편하게 연락 주세요.",
     },
     cards: [
       { icon: "mail",     label: "Email",          value: "taeyii3056@hanyang.ac.kr", href: "mailto:taeyii3056@hanyang.ac.kr" },
