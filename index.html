@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="김태이 (Taeyi Kim) — 제조 현장에서 수집한 데이터로 배터리·설비의 열화를 예측하고, 경량 모델을 엣지 디바이스에 배포하는 PHM 연구자입니다." />
+  <meta name="keywords" content="김태이, Taeyi Kim, PHM, 고장 예지, 건전성 관리, 시계열 예측, 잔여수명 예측, RUL, 모델 경량화, 지식 증류, 엣지 배포, TinyML, 한양대학교 ERICA, IODA Lab" />
+  <meta name="author" content="김태이 (Taeyi Kim)" />
+  <meta name="theme-color" content="#0A192F" />
+  <link rel="canonical" href="https://taeyii.github.io/" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="김태이 | PHM · 시계열 예측 · 엣지 배포" />
+  <meta property="og:description" content="한양대학교 ERICA 산업경영공학 석사 (IODA Lab) — PHM · 시계열 예측, 데이터 수집부터 모델 경량화·엣지 배포까지." />
+  <meta property="og:image" content="https://taeyii.github.io/assets/img/og.jpg" />
+  <meta property="og:url" content="https://taeyii.github.io/" />
+  <meta name="twitter:card" content="summary" />
+
+  <title>김태이 | PHM · 시계열 예측 · 엣지 배포</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+
+  <script>
+    /* Apply theme before CSS paints to avoid a flash */
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20260826" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Taeyi Kim",
+    "alternateName": "김태이",
+    "url": "https://taeyii.github.io/",
+    "image": "https://taeyii.github.io/assets/img/og.jpg",
+    "email": "mailto:taeyii3056@hanyang.ac.kr",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Hanyang University ERICA" },
+    "sameAs": [
+      "https://github.com/taeyii",
+      "https://scholar.google.com/citations?user=SuhlHloAAAAJ",
+      "https://orcid.org/0009-0003-9683-7015"
+    ],
+    "knowsAbout": ["Prognostics and Health Management", "Time-Series Forecasting", "Remaining Useful Life Prediction", "Model Compression", "Knowledge Distillation", "Edge Deployment"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <header id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Taeyi Kim 홈">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 34 34" fill="none">
+            <path d="M5 10.5c6.2.1 10.2.8 13.4 2.4 3.6 1.8 5.3 4.7 10.6 10.8"/>
+            <path d="M5 24.5h24"/>
+            <circle cx="23.2" cy="18.3" r="2.1"/>
+          </svg>
+        </span>
+        <span class="logo-word">taeyi<span>.</span></span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">소개</a></li>
+          <li><a href="#education">학력</a></li>
+          <li><a href="#experience">경력</a></li>
+          <li><a href="#projects">프로젝트</a></li>
+          <li><a href="#publications">논문</a></li>
+          <li><a href="#awards">수상</a></li>
+          <li><a href="#contact">연락처</a></li>
+        </ul>
+      </nav>
+      <div class="nav-tools">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light / dark">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+          <span class="lang-current">KO</span><span class="lang-divider">/</span><span class="lang-target">EN</span>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section id="hero">
+      <svg class="hero-curve" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="curveFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#4DA3FF" stop-opacity=".22"/>
+            <stop offset="100%" stop-color="#4DA3FF" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path class="curve-fill" d="M0,62 C150,66 260,74 380,92 C470,106 540,124 640,140 C740,156 820,166 900,190 C980,214 1060,246 1200,300 L1200,300 L0,300 Z"/>
+        <line class="curve-eol" x1="0" y1="190" x2="1200" y2="190"/>
+        <path class="curve-main" d="M0,62 C150,66 260,74 380,92 C470,106 540,124 640,140 C740,156 820,166 900,190 C980,214 1060,246 1200,300"/>
+        <circle class="curve-pulse" cx="900" cy="190" r="6"/>
+        <circle class="curve-dot" cx="900" cy="190" r="4.5"/>
+      </svg>
+
+      <div class="hero-inner">
+        <div class="hero-text fade-up">
+          <div class="hero-eyebrow" data-i18n="misc.eyebrow">데이터 수집 · 분석 · 엣지 배포</div>
+          <h1 class="hero-name"><span id="heroName">김태이</span><span class="hero-kr" id="heroNameKr">Taeyi Kim</span></h1>
+          <div class="hero-title-wrap">
+            <span class="hero-title-prefix">—</span>
+            <span class="hero-title-text" id="heroTitleText"></span>
+            <span class="hero-cursor">|</span>
+          </div>
+          <p class="hero-location">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span id="heroLocationText"></span>
+          </p>
+          <div class="hero-summary" id="heroSummary"></div>
+          <div class="hero-tags" id="heroTags"></div>
+          <div class="hero-actions" id="heroActions"></div>
+        </div>
+
+        <div class="hero-photo-col fade-up-delay">
+          <div class="photo-orbit">
+            <div class="photo-ring">
+              <div class="photo-ring-inner">
+                <div class="photo-circle">
+                  <img id="profileImg" src="assets/img/profile.jpg" alt="김태이 Taeyi Kim" width="280" height="280" />
+                  <div class="photo-fallback" id="photoFallback">T</div>
+                </div>
+              </div>
+            </div>
+            <div class="photo-badge"><span class="dot"></span><span data-i18n="misc.photoBadge">한양대 ERICA 석사 · IODA Lab</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true"><div class="scroll-mouse"><div class="scroll-dot"></div></div></div>
+    </section>
+
+    <!-- ═══ IMPACT STRIP ═══ -->
+    <section id="impact"><div class="impact-inner" id="impactStrip"></div></section>
+
+    <!-- ═══ ABOUT ═══ -->
+    <section id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div>
+            <h2 class="about-headline" id="aboutHeadline"></h2>
+            <p class="about-lead" id="aboutLead"></p>
+            <div class="about-body" id="aboutBody"></div>
+          </div>
+          <div class="about-side" id="aboutSide"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ RESEARCH FOCUS ═══ -->
+    <section id="research" class="section-surface">
+      <div class="container">
+        <div class="section-label">01</div>
+        <h2 class="section-title" data-i18n="label.researchFocus">연구 분야</h2>
+        <div class="research-grid" id="researchGrid"></div>
+      </div>
+    </section>
+
+    <!-- ═══ NEWS ═══ -->
+    <section id="news" class="section-alt">
+      <div class="container">
+        <div class="section-label">02</div>
+        <h2 class="section-title" data-i18n="label.news">최근 소식</h2>
+        <div class="news-list" id="newsList"></div>
+      </div>
+    </section>
+
+    <!-- ═══ EDUCATION ═══ -->
+    <section id="education">
+      <div class="container">
+        <div class="section-label">03</div>
+        <h2 class="section-title" data-i18n="label.education">학력</h2>
+        <div class="timeline" id="educationTimeline"></div>
+      </div>
+    </section>
+
+    <!-- ═══ EXPERIENCE ═══ -->
+    <section id="experience" class="section-alt">
+      <div class="container">
+        <div class="section-label">04</div>
+        <h2 class="section-title" data-i18n="label.experience">경력</h2>
+        <div class="timeline" id="experienceTimeline"></div>
+      </div>
+    </section>
+
+    <!-- ═══ PROJECTS ═══ -->
+    <section id="projects" class="section-surface">
+      <div class="container">
+        <div class="section-label">05</div>
+        <div class="section-head">
+          <h2 class="section-title" data-i18n="label.projects">프로젝트</h2>
+          <span class="section-count" id="projectsCount"></span>
+        </div>
+        <p class="section-subtitle" data-i18n="label.projectsSub">연구 과제, 인턴십, 그리고 직접 구현한 프로젝트</p>
+        <div class="projects-grid" id="projectsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ═══ PUBLICATIONS ═══ -->
+    <section id="publications" class="section-alt">
+      <div class="container">
+        <div class="section-label">06</div>
+        <div class="section-head">
+          <h2 class="section-title" data-i18n="label.publications">논문 및 학술 활동</h2>
+          <span class="section-count" id="pubCount"></span>
+        </div>
+        <div class="pub-filter-bar" id="pubFilterBar"></div>
+        <div class="pub-list" id="pubList"></div>
+      </div>
+    </section>
+
+    <!-- ═══ AWARDS ═══ -->
+    <section id="awards">
+      <div class="container">
+        <div class="section-label">07</div>
+        <h2 class="section-title" data-i18n="label.awards">수상</h2>
+        <div class="awards-grid" id="awardsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ═══ PATENTS ═══ -->
+    <section id="patents" class="section-alt">
+      <div class="container">
+        <div class="section-label">08</div>
+        <h2 class="section-title" data-i18n="label.patents">특허</h2>
+        <div class="patents-list" id="patentsList"></div>
+      </div>
+    </section>
+
+    <!-- ═══ ACTIVITIES ═══ -->
+    <section id="activities" class="section-surface">
+      <div class="container">
+        <div class="section-label">09</div>
+        <h2 class="section-title" data-i18n="label.activities">활동</h2>
+        <div class="activities-grid" id="activitiesGrid"></div>
+      </div>
+    </section>
+
+    <!-- ═══ SKILLS ═══ -->
+    <section id="skills" class="section-alt">
+      <div class="container">
+        <div class="section-label">10</div>
+        <h2 class="section-title" data-i18n="label.skills">기술 스택</h2>
+        <div class="skills-grid" id="skillsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ═══ CONTACT ═══ -->
+    <section id="contact" class="section-dark">
+      <div class="container">
+        <h2 class="section-title light" data-i18n="label.contact">연락하기</h2>
+        <p class="contact-intro" id="contactIntro"></p>
+        <div class="contact-cards" id="contactCards"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-name" id="footerName">김태이 · Taeyi Kim</span>
+        <span class="footer-copy">© <span id="footerYear"></span> <span data-i18n="misc.rights">All rights reserved</span></span>
+        <span class="footer-updated"><span data-i18n="misc.updated">업데이트:</span> <span id="lastUpdated"></span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js?v=20260826"></script>
+  <script src="assets/js/main.js?v=20260826"></script>
+</body>
+</html>
