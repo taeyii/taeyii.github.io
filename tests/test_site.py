@@ -45,6 +45,19 @@ class SiteTests(unittest.TestCase):
                 title = project['title']
                 self.assertIn(title[lang] if isinstance(title, dict) else title, text)
 
+    def test_requested_cv_and_navigation_removals(self):
+        for prefix in ['', 'en/']:
+            html = (SITE / prefix / 'cv/index.html').read_text(encoding='utf-8')
+            self.assertNotIn('KITECH', html)
+            self.assertNotIn('한국생산기술연구원', html)
+            self.assertIn('Edge Cross AI', html)
+            for slug in ['', 'research/', 'cv/']:
+                page = (SITE / prefix / slug / 'index.html').read_text(encoding='utf-8')
+                nav = page.split('<nav class="site-navigation"', 1)[1].split('</nav>', 1)[0]
+                self.assertNotIn('notes/', nav)
+                self.assertIn('research/', nav)
+                self.assertIn('cv/', nav)
+
     def test_local_assets_and_navigation_resolve(self):
         from urllib.parse import urlsplit, unquote
         for path in SITE.rglob('*.html'):

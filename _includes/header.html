@@ -7,7 +7,6 @@
     <nav class="site-navigation" aria-label="{% if english %}Main navigation{% else %}주 메뉴{% endif %}">
       <a href="{{ root | relative_url }}" {% if page.section == 'about' %}aria-current="page"{% endif %}>{% if english %}About{% else %}소개{% endif %}</a>
       <a href="{{ root | append: 'research/' | relative_url }}" {% if page.section == 'research' %}aria-current="page"{% endif %}>{% if english %}Research{% else %}연구{% endif %}</a>
-      <a href="{{ root | append: 'notes/' | relative_url }}" {% if page.section == 'notes' %}aria-current="page"{% endif %}>{% if english %}Notes{% else %}기록{% endif %}</a>
       <a href="{{ root | append: 'cv/' | relative_url }}" {% if page.section == 'cv' %}aria-current="page"{% endif %}>{% if english %}CV{% else %}이력{% endif %}</a>
       <a class="language-link" href="{{ page.translation | default: fallback_translation | relative_url }}" lang="{% if english %}ko{% else %}en{% endif %}" aria-label="{% if english %}한국어 페이지{% else %}English version{% endif %}">{% if english %}KO{% else %}EN{% endif %}</a>
     </nav>
