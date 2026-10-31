@@ -22,9 +22,12 @@ class PostLayoutTests(unittest.TestCase):
         ruby = os.environ.get('JEKYLL_RUBY') or shutil.which('ruby')
         if not ruby:
             raise RuntimeError('Ruby is required for the post integration test')
-        jekyll = Path(ruby).parent / 'jekyll'
-        command = [ruby, str(jekyll)] if jekyll.exists() else [ruby, '-S', 'jekyll']
-        subprocess.run(command + ['build'], cwd=cls.source, check=True, capture_output=True, timeout=60)
+        command = [ruby, '-S', 'bundle', 'exec', 'jekyll']
+        env = os.environ.copy()
+        env['BUNDLE_GEMFILE'] = str(ROOT / 'Gemfile')
+        result = subprocess.run(command + ['build'], cwd=cls.source, env=env, capture_output=True, timeout=60)
+        if result.returncode:
+            raise RuntimeError(result.stdout.decode(errors='replace') + result.stderr.decode(errors='replace'))
 
     @classmethod
     def tearDownClass(cls):
