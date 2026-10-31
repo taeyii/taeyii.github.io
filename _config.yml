@@ -1,0 +1,50 @@
+title: Taeyi Kim
+email: taeyii3056@hanyang.ac.kr
+description: 짧은 관측 구간에서의 예측, 모델 경량화와 제조 데이터 분석을 연구하는 김태이의 개인 홈페이지.
+url: https://taeyii.github.io
+baseurl: ""
+lang: ko
+author: Taeyi Kim
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+permalink: /notes/:year/:month/:day/:title/
+minima:
+  date_format: "%Y.%m.%d"
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - README-jekyll.md
+  - tests
+  - scripts
+  - vendor
+  - node_modules
+  - package.json
+  - package-lock.json
+  - screenshots
+  - preview
+  - CHANGELOG.md
+  - DEPLOY.md
+  - .nojekyll
+  - assets/js/data.js
+  - assets/js/main.js
+  - assets/css/style.css
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
+      lang: ko
+  - scope:
+      path: en
+    values:
+      lang: en
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      section: notes

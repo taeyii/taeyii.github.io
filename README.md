@@ -1,5 +1,9 @@
 # taeyii.github.io
 
+> **현재 Jekyll 버전 안내: [README-jekyll.md](README-jekyll.md)**
+> 아래는 이전 정적 홈페이지의 보관용 안내입니다. 현재 내용은 `_data/profile.json`에서 수정합니다.
+
+
 김태이 (Taeyi Kim) 개인 홈페이지 — <https://taeyii.github.io>
 
 빌드 도구 없이 순수 HTML / CSS / JS로 만든 싱글 페이지 사이트입니다.

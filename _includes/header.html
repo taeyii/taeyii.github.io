@@ -1,0 +1,15 @@
+{% assign english = false %}{% if page.lang == 'en' %}{% assign english = true %}{% endif %}
+{% assign root = '/' %}{% assign fallback_translation = '/en/' %}{% if english %}{% assign root = '/en/' %}{% assign fallback_translation = '/' %}{% endif %}
+<a class="skip-link" href="#content">{% if english %}Skip to content{% else %}본문으로 건너뛰기{% endif %}</a>
+<header class="site-header" role="banner">
+  <div class="wrapper masthead">
+    <a class="site-title" href="{{ root | relative_url }}">Taeyi Kim<span class="name-dot">.</span></a>
+    <nav class="site-navigation" aria-label="{% if english %}Main navigation{% else %}주 메뉴{% endif %}">
+      <a href="{{ root | relative_url }}" {% if page.section == 'about' %}aria-current="page"{% endif %}>{% if english %}About{% else %}소개{% endif %}</a>
+      <a href="{{ root | append: 'research/' | relative_url }}" {% if page.section == 'research' %}aria-current="page"{% endif %}>{% if english %}Research{% else %}연구{% endif %}</a>
+      <a href="{{ root | append: 'notes/' | relative_url }}" {% if page.section == 'notes' %}aria-current="page"{% endif %}>{% if english %}Notes{% else %}기록{% endif %}</a>
+      <a href="{{ root | append: 'cv/' | relative_url }}" {% if page.section == 'cv' %}aria-current="page"{% endif %}>{% if english %}CV{% else %}이력{% endif %}</a>
+      <a class="language-link" href="{{ page.translation | default: fallback_translation | relative_url }}" lang="{% if english %}ko{% else %}en{% endif %}" aria-label="{% if english %}한국어 페이지{% else %}English version{% endif %}">{% if english %}KO{% else %}EN{% endif %}</a>
+    </nav>
+  </div>
+</header>

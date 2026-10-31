@@ -1,0 +1,6 @@
+{% assign posts = site.posts | where: 'lang', page.lang %}
+{% if posts.size > 0 %}
+<ul class="post-list">{% for post in posts %}<li><p class="entry-meta">{{ post.date | date: '%Y.%m.%d' }}</p><h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>{{ post.excerpt }}</li>{% endfor %}</ul>
+{% else %}
+<div class="empty-notes"><span class="notebook-mark" aria-hidden="true">[&nbsp;&nbsp;]</span><p>{% if page.lang == 'en' %}No posts yet.{% else %}아직 올린 글은 없습니다.{% endif %}</p><p class="entry-description">{% if page.lang == 'en' %}In the meantime, you can find my <a href="{{ '/en/research/' | relative_url }}">papers and projects here</a>.{% else %}그동안 진행한 연구는 <a href="{{ '/research/' | relative_url }}">논문과 프로젝트</a>에서 볼 수 있습니다.{% endif %}</p></div>
+{% endif %}

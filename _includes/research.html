@@ -1,0 +1,19 @@
+{% assign d = site.data.profile %}{% assign en = false %}{% if page.lang == 'en' %}{% assign en = true %}{% endif %}
+<nav class="section-index" aria-label="{% if en %}On this page{% else %}이 페이지에서{% endif %}"><a href="#publications">{% if en %}Publications{% else %}논문 · 학술 발표{% endif %}</a><a href="#projects">{% if en %}Projects{% else %}프로젝트{% endif %}</a><a href="#patents">{% if en %}Patents{% else %}특허{% endif %}</a></nav>
+<section class="reading-section first-section" id="publications">
+  <div class="section-heading"><h2>{% if en %}Publications & presentations{% else %}논문 · 학술 발표{% endif %}</h2></div>
+  {% assign year = '' %}{% for paper in d.publications %}{% assign current_year = paper.date | slice: 0, 4 %}{% if current_year != year %}<h3 class="year-divider">{{ current_year }}</h3>{% assign year = current_year %}{% endif %}
+  <article class="publication-entry">
+    {% assign type_label = d.ui.badge[paper.type] %}{% assign role_label = d.ui.badge[paper.role] %}<p class="entry-meta">{{ paper.date }} <span>/</span> {% include text.html value=type_label %}{% if paper.role %} <span>/</span> {% include text.html value=role_label %}{% endif %}</p>
+    <h3>{% if paper.url %}<a href="{{ paper.url }}">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</h3>
+    {% if paper.authors %}<p class="authors">{{ paper.authors }}</p>{% endif %}
+    <p class="venue">{% include text.html value=paper.venue %}</p>
+    {% if paper.note %}<p class="entry-description">{% include text.html value=paper.note %}</p>{% endif %}
+    {% if paper.award %}<p class="award-note">{% capture award %}{% include text.html value=paper.award %}{% endcapture %}{{ award | remove: '🏆' | strip }}</p>{% endif %}
+  </article>{% endfor %}
+</section>
+<section class="reading-section" id="projects">
+  <div class="section-heading"><h2>{% if en %}Projects{% else %}프로젝트{% endif %}</h2></div>
+  {% for project in d.projects %}<article class="project-entry"><p class="entry-meta">{{ project.period }}</p><h3>{% include text.html value=project.title %}</h3>{% if project.org %}<p class="venue">{% include text.html value=project.org %}</p>{% endif %}<p class="entry-description">{% include text.html value=project.desc %}</p>{% if project.badge %}<p class="award-note">{% capture badge %}{% include text.html value=project.badge %}{% endcapture %}{{ badge | remove: '🏆' | strip }}</p>{% endif %}{% if project.stack %}<p class="tools">{{ project.stack | join: ' / ' }}</p>{% endif %}</article>{% endfor %}
+</section>
+<section class="reading-section" id="patents"><div class="section-heading"><h2>{% if en %}Patents{% else %}특허{% endif %}</h2></div>{% for patent in d.patents %}<article class="project-entry"><p class="entry-meta">{{ patent.filed }} <span>/</span> {% include text.html value=patent.status %}</p><h3>{% include text.html value=patent.title %}</h3><p class="authors">{{ patent.inventors }}</p><p class="entry-description">{% include text.html value=patent.desc %}</p><p class="tools">{{ patent.number }} · {% include text.html value=patent.authority %}</p></article>{% endfor %}</section>
